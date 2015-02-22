@@ -1,0 +1,12 @@
+#version 140\n
+in vec4 position;\n
+in vec4 color;\n
+uniform mat4 modelMatrix;\n
+uniform mat4 viewMatrix;\n
+smooth out vec4 theColor;\n
+void main()\n
+{\n
+   gl_Position = viewMatrix * modelMatrix * position;\n
+   theColor = color;\n" //just pass on the color. It's a **smooth**, so will be interpolated
+}\n
+
