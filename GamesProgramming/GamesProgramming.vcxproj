@@ -79,14 +79,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="createShaders.cpp" />
+    <ClCompile Include="createWindow.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="LoadAssets.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="setGLAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="createShaders.h" />
+    <ClInclude Include="createWindow.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="LoadAssets.h" />
     <ClInclude Include="setGLAttributes.h" />
     <ClInclude Include="vertexData.h" />
   </ItemGroup>

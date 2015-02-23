@@ -1,16 +1,19 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
+
+#include <fstream>
+
 //include headers
-#include "Display.h"
-#include "setGLAttributes.h"
+#include "createWindow.h"
 #include "vertexData.h"
+#include "setGLAttributes.h"
+#include "LoadAssets.h"
 
 using namespace std;
 
-GLuint vertexBufferObject;
-GLuint vertexBufferObject2D;
-GLuint vao;
+//ifstream vertexShader("VertexShader.txt");
+//ifstream fragmentShader("FragmentShader.txt");
 
 void initialise()
 {
@@ -21,40 +24,15 @@ void initialise()
 	cout << "SDL initialised OK!\n";
 }
 
-void initializeVertexBuffer()
-{
-
-	/*
-	glGenBuffers(1, &vertexBufferObject2D);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject2D);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData2D), vertexData2D, GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	cout << "positionBufferObject2D created OK! GLUint is: " << vertexBufferObject << std::endl;
-	*/
-
-	glGenBuffers(1, &vertexBufferObject);
-
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	cout << "positionBufferObject created OK! GLUint is: " << vertexBufferObject << std::endl;
-}
-
 int main(int argc, char *argv[])
 {
 	initialise();
-
-	/*
-	createWindow();
-	setGLAttributes();
-	createContext();
-	initGlew();
-	*/
-
-	setGLAttributes setGLAttributes(3,3); // this will set the OpenGL version to 3.3
-
-	Display display("Games Programming", 1080, 768);
+	createWindow createWindow("Games Programming", 1280, 720); // this will set the program info (name, x, y)
+	setGLAttributes setGLAttributes(3, 3);
+	
+	LoadAssets LoadAssets(ifstream vertexShader, ifstream fragmentShader);
+	
+	glClearColor(1.0f,0.0f,0.0f,1.0f);
 
 	SDL_Delay(10000);
 
@@ -62,3 +40,4 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+

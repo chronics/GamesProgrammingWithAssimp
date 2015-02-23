@@ -21,10 +21,13 @@
     <ClCompile Include="Display.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="createWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="setGLAttributes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="createShaders.cpp">
+    <ClCompile Include="LoadAssets.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,13 +35,16 @@
     <ClInclude Include="Display.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="setGLAttributes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="vertexData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="createShaders.h">
+    <ClInclude Include="createWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="setGLAttributes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadAssets.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

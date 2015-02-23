@@ -39,8 +39,9 @@ Display::Display(const std::string& title, int width, int height)
 	std::cin >> inputc;
 	std::cout << "Loading-- (this may take a while!) ...\n\n";
 
-	if (inputc == 'y' || inputc == 'Y')
+	if (inputc == 'y' || inputc == 'Y'){
 		window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN | SDL_WINDOW_SHOWN);
+		std::cout << "fullscreen working\n";}
 	else
 		window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_SHOWN);
 
@@ -85,63 +86,6 @@ Display::~Display()
 	SDL_DestroyWindow(window);
 }
 
-void initializeProgram()
-{
-	std::vector<GLuint> shaderList;
-
-	shaderList.push_back(createShader(GL_VERTEX_SHADER, strVertexShader));
-	shaderList.push_back(createShader(GL_FRAGMENT_SHADER, strFragmentShader));
-
-	theProgram = createProgram(shaderList);
-	if (theProgram == 0)
-	{
-		cout << "GLSL program creation error." << std::endl;
-		SDL_Quit();
-		exit(1);
-	}
-	else {
-		cout << "GLSL program creation OK! GLUint is: " << theProgram << std::endl;
-	}
-
-	positionLocation = glGetAttribLocation(theProgram, "position");
-	colorLocation = glGetAttribLocation(theProgram, "color");
-	modelMatrixLocation = glGetUniformLocation(theProgram, "modelMatrix");
-	viewMatrixLocation = glGetUniformLocation(theProgram, "viewMatrix");
-	projectionMatrixLocation = glGetUniformLocation(theProgram, "projectionMatrix");
-
-	//check errors on locations
-	//clean up shaders (we don't need them anymore as they are no in theProgram
-	for_each(shaderList.begin(), shaderList.end(), glDeleteShader);
-}
-
-GLuint createProgram(const std::vector<GLuint> &shaderList)
-{
-	GLuint program = glCreateProgram();
-
-	for (size_t iLoop = 0; iLoop < shaderList.size(); iLoop++)
-		glAttachShader(program, shaderList[iLoop]);
-
-	glLinkProgram(program);
-
-	GLint status;
-	glGetProgramiv(program, GL_LINK_STATUS, &status);
-	if (status == GL_FALSE)
-	{
-		GLint infoLogLength;
-		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLogLength);
-
-		GLchar *strInfoLog = new GLchar[infoLogLength + 1];
-		glGetProgramInfoLog(program, infoLogLength, NULL, strInfoLog);
-		fprintf(stderr, "Linker failure: %s\n", strInfoLog);
-		delete[] strInfoLog;
-	}
-
-	for (size_t iLoop = 0; iLoop < shaderList.size(); iLoop++)
-		glDetachShader(program, shaderList[iLoop]);
-
-	return program;
-}
-
 GLuint createShader(GLenum eShaderType, const std::string &strShaderFile)
 {
 	GLuint shader = glCreateShader(eShaderType);
@@ -175,4 +119,60 @@ GLuint createShader(GLenum eShaderType, const std::string &strShaderFile)
 	return shader;
 }
 
+GLuint createProgram(const std::vector<GLuint> &shaderList)
+{
+	GLuint program = glCreateProgram();
+
+	for (size_t iLoop = 0; iLoop < shaderList.size(); iLoop++)
+		glAttachShader(program, shaderList[iLoop]);
+
+	glLinkProgram(program);
+
+	GLint status;
+	glGetProgramiv(program, GL_LINK_STATUS, &status);
+	if (status == GL_FALSE)
+	{
+		GLint infoLogLength;
+		glGetProgramiv(program, GL_INFO_LOG_LENGTH, &infoLogLength);
+
+		GLchar *strInfoLog = new GLchar[infoLogLength + 1];
+		glGetProgramInfoLog(program, infoLogLength, NULL, strInfoLog);
+		fprintf(stderr, "Linker failure: %s\n", strInfoLog);
+		delete[] strInfoLog;
+	}
+
+	for (size_t iLoop = 0; iLoop < shaderList.size(); iLoop++)
+		glDetachShader(program, shaderList[iLoop]);
+
+	return program;
+}
+
+void initializeProgram()
+{
+	std::vector<GLuint> shaderList;
+
+	shaderList.push_back(createShader(GL_VERTEX_SHADER, strVertexShader));
+	shaderList.push_back(createShader(GL_FRAGMENT_SHADER, strFragmentShader));
+
+	theProgram = createProgram(shaderList);
+	if (theProgram == 0)
+	{
+		cout << "GLSL program creation error." << std::endl;
+		SDL_Quit();
+		exit(1);
+	}
+	else {
+		cout << "GLSL program creation OK! GLUint is: " << theProgram << std::endl;
+	}
+
+	positionLocation = glGetAttribLocation(theProgram, "position");
+	colorLocation = glGetAttribLocation(theProgram, "color");
+	modelMatrixLocation = glGetUniformLocation(theProgram, "modelMatrix");
+	viewMatrixLocation = glGetUniformLocation(theProgram, "viewMatrix");
+	projectionMatrixLocation = glGetUniformLocation(theProgram, "projectionMatrix");
+
+	//check errors on locations
+	//clean up shaders (we don't need them anymore as they are no in theProgram
+	for_each(shaderList.begin(), shaderList.end(), glDeleteShader);
+}
 
