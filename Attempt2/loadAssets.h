@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _LOADASSEST_H
+#define _LOADASSEST_H
 
 #include <iostream>
 #include <fstream>
@@ -24,3 +25,4 @@ public:
 	
 };
 
+#endif

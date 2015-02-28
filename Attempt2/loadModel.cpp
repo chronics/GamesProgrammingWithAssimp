@@ -1,8 +1,48 @@
 #include "loadModel.h"
+#include "loadAssets.h"
+
+GLuint shaderProgram;
+GLuint vertexAttrib;
+GLuint uvAttrib;
+
+// Struct to hold mesh loaded into OpenGL
+struct Mesh
+{
+	unsigned int drawCount = 0;
+	unsigned int materialIndex = 0;
+	GLuint indexBuffer;
+	GLuint vertexBuffer;
+	GLuint uvBuffer;
+	GLuint vertexArrayObject;
+	bool hasUvs = false;
+};
+
+// Struct to hold material loaded into OpenGL
+struct Material
+{
+	glm::vec3 diffuseColor;
+	GLuint diffuseTexture;
+	bool hasDiffuseTexture;
+};
+
+struct Model
+{
+	std::vector<Mesh*> meshes;
+	std::vector<Material*> materials;
+};
+
+glm::vec3 modelPosition = glm::vec3(0.0f, 0.0f, 0.0f);
+glm::vec3 modelScale = glm::vec3(1.0f, 1.0f, 1.0f);
+glm::vec3 modelRotation = glm::vec3(0.0f, 0.0f, 0.0f); // euler angles in radians
+glm::mat4 modelMatrix;
+const std::string modelFile = "models/dragon.obj";
+Model* model;
 
 
 loadModel::loadModel()
 {
+	shaderProgram = glCreateProgram();
+
 	// Use assimp to load a scene from the model file, and apply some post processing. See http://assimp.sourceforge.net/lib_html/postprocess_8h.html for more information.
 	Assimp::Importer importer;
 	const aiScene* scene = importer.ReadFile(modelFile, aiProcess_Triangulate | aiProcess_JoinIdenticalVertices | aiProcess_GenUVCoords | aiProcess_TransformUVCoords | aiProcess_OptimizeMeshes | aiProcess_FlipUVs);
