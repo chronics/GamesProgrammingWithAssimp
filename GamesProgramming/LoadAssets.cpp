@@ -5,21 +5,27 @@
 #include <algorithm>
 
 #include <fstream>
+#include <string>
 
 #include <SDL2\SDL.h>
 #include <GL\glew.h>
+
+#define GLM_FORCE_RADIANS //force glm to use radians //must do **before** including GLM headers
+//NOTE: GLSL uses radians, so will do the same, for consistency
+
+#include <glm/glm.hpp> //include the main glm header
+#include <glm/gtc/matrix_transform.hpp> //include functions to ease the calculation of the view and projection matrices
+#include <glm/gtc/type_ptr.hpp> //include functionality for converting a matrix object into a float array for usage in OpenGL
+
 
 #include "vertexData.h"
 
 using namespace std;
 
-//const std::string strVertexShader(vertexShader1);
-//const std::string strFragmentShader(fragmentShader1);
+/*
 
 GLuint vao, vertexBufferObject, theProgram, vertex, normal, uv;
-
 GLint positionLocation, colorLocation, modelMatrixLocation, viewMatrixLocation;
-
 
 GLuint createShader(GLenum eShaderType, const std::string &strShaderFile)
 {
@@ -82,17 +88,15 @@ GLuint createProgram(const std::vector<GLuint> &shaderList)
 	return program;
 }
 
-LoadAssets::LoadAssets(ifstream vertexShader, ifstream fragmentShader);
+LoadAssets::LoadAssets(const std::string& strVertexShader, const std::string& strFragmentShader)
 {
-	const std::string vertexShader = vertexShader1;
-	const std::string fragmentShader = fragmentShader1;
-
 	initializeProgram(); //create GLSL Shaders, link into a GLSL program
 
 	initializeVertexBuffer(); //load data into a vertex buffer
 
 	glGenVertexArrays(1, &vao); //create a Vertex Array Object
 	glBindVertexArray(vao); //make the VAO active
+
 	std::cout << "Vertex Array Object created OK! GLUint is: " << vao << std::endl;
 }
 
@@ -138,3 +142,4 @@ void initializeVertexBuffer()
 LoadAssets::~LoadAssets()
 {
 }
+*/

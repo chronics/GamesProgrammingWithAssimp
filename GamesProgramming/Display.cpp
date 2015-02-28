@@ -17,19 +17,14 @@
 using namespace std;
 
 
-
-const std::string strVertexShader("in vec4 position;\n" "in vec4 color;\n" "uniform mat4 modelMatrix;\n" "uniform mat4 viewMatrix;\n" "uniform mat4 projectionMatrix;\n"
-	"smooth out vec4 theColor;\n" "void main()\n" "{\n" "gl_Position = projectionMatrix * viewMatrix * modelMatrix * position;\n" "theColor = color;\n"	"}\n");
-
-const std::string strFragmentShader("#version 140\n" "smooth in vec4 theColor;\n" "out vec4 outputColor;\n" "void main()\n"
-	"{\n" "outputColor = theColor;\n" "}\n");
-
+/*
 GLuint theProgram; //GLuint that we'll fill in to refer to the GLSL program (only have 1 at this point)
 GLint positionLocation; //GLint that we'll fill in with the location of the `position` attribute in the GLSL
 GLint colorLocation; //GLint that we'll fill in with the location of the `color` attribute in the GLSL
 GLint modelMatrixLocation; //GLint that we'll fill in with the location of the `modelMatrix` uniform in the GLSL
 GLint viewMatrixLocation;//GLint that we'll fill in with the location of the `modelMatrix` uniform in the GLSL
 GLint projectionMatrixLocation;
+*/
 
 Display::Display(const std::string& title, int width, int height)
 {
@@ -86,6 +81,8 @@ Display::~Display()
 	SDL_DestroyWindow(window);
 }
 
+
+/*
 GLuint createShader(GLenum eShaderType, const std::string &strShaderFile)
 {
 	GLuint shader = glCreateShader(eShaderType);
@@ -175,4 +172,4 @@ void initializeProgram()
 	//clean up shaders (we don't need them anymore as they are no in theProgram
 	for_each(shaderList.begin(), shaderList.end(), glDeleteShader);
 }
-
+*/

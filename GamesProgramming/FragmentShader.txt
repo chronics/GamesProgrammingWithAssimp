@@ -1,7 +1,0 @@
-#version 140\n
-smooth in vec4 theColor;\n
-out vec4 outputColor;
-void main()
-{
-   outputColor = theColor;
-}
