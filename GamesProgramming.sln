@@ -7,7 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GamesProgramming", "GamesPr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Attempt2", "Attempt2\Attempt2.vcxproj", "{2E06DBE5-E65F-44AD-855C-EDA8467C34EA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GarysDemo (not my work but a referance)", "GarysDemo (not my work but a referance)\GarysDemo (not my work but a referance).vcxproj", "{2CF823E6-ABE8-4CDC-9BFD-C36CFADD3D5E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Basic2dBlockGame", "Basic2dBlockGame\Basic2dBlockGame.vcxproj", "{007BE012-4785-4ECD-A781-0A26B3E9EF40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{2E06DBE5-E65F-44AD-855C-EDA8467C34EA}.Debug|Win32.Build.0 = Debug|Win32
 		{2E06DBE5-E65F-44AD-855C-EDA8467C34EA}.Release|Win32.ActiveCfg = Release|Win32
 		{2E06DBE5-E65F-44AD-855C-EDA8467C34EA}.Release|Win32.Build.0 = Release|Win32
-		{2CF823E6-ABE8-4CDC-9BFD-C36CFADD3D5E}.Debug|Win32.ActiveCfg = Debug|Win32
-		{2CF823E6-ABE8-4CDC-9BFD-C36CFADD3D5E}.Debug|Win32.Build.0 = Debug|Win32
-		{2CF823E6-ABE8-4CDC-9BFD-C36CFADD3D5E}.Release|Win32.ActiveCfg = Release|Win32
-		{2CF823E6-ABE8-4CDC-9BFD-C36CFADD3D5E}.Release|Win32.Build.0 = Release|Win32
+		{007BE012-4785-4ECD-A781-0A26B3E9EF40}.Debug|Win32.ActiveCfg = Debug|Win32
+		{007BE012-4785-4ECD-A781-0A26B3E9EF40}.Debug|Win32.Build.0 = Debug|Win32
+		{007BE012-4785-4ECD-A781-0A26B3E9EF40}.Release|Win32.ActiveCfg = Release|Win32
+		{007BE012-4785-4ECD-A781-0A26B3E9EF40}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
