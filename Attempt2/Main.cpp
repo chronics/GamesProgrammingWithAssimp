@@ -27,5 +27,9 @@ int main(int argc, char *argv[])
 
 	loadAssets loadAssets();
 
+	SDL_Delay(10000);
+
+	SDL_Quit();
+
 	return 0;
 }

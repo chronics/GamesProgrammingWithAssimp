@@ -1,6 +1,7 @@
 #include "loadModel.h"
 #include "loadAssets.h"
 
+/*
 GLuint shaderProgram;
 GLuint vertexAttrib;
 GLuint uvAttrib;
@@ -255,5 +256,6 @@ loadModel::loadModel()
 
 loadModel::~loadModel()
 {
-	importer.FreeScene();
+	//importer.FreeScene();
 }
+*/

@@ -3,8 +3,6 @@
 
 //add read from file and convert to string for shaders
 
-GLuint vao, vertexBufferObject, theProgram, vertex, normal, uv;
-GLint positionLocation, colorLocation, modelMatrixLocation, viewMatrixLocation;
 
 std::string LoadShaderFromFile(const std::string& filename)
 {
@@ -93,18 +91,13 @@ GLuint createProgram(const std::vector<GLuint> &shaderList)
 
 loadAssets::loadAssets()
 {
-	initializeProgram(); //create GLSL Shaders, link into a GLSL program
-
-	initializeVertexBuffer(); //load data into a vertex buffer
-
 	glGenVertexArrays(1, &vao); //create a Vertex Array Object
 	glBindVertexArray(vao); //make the VAO active
 
 	std::cout << "Vertex Array Object created OK! GLUint is: " << vao << std::endl;
-}
 
-void initializeProgram()
-{
+	//initializeProgram
+
 	std::string vertexSource = LoadShaderFromFile("shaders/shader.vert");
 	std::string fragmentSource = LoadShaderFromFile("shaders/shader.frag");
 
@@ -128,15 +121,41 @@ void initializeProgram()
 
 	//clean up shaders (we don't need them anymore as they are no in theProgram
 	for_each(shaderList.begin(), shaderList.end(), glDeleteShader);
-}
 
-void initializeVertexBuffer()
-{
+	//initializeVertexBuffer
+
 	glGenBuffers(1, &vertexBufferObject);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+
+
+	//render
+	glUseProgram(theProgram); //installs the program object specified by program as part of current rendering state
+
+	//load data to GLSL that **may** have changed
+	glUniformMatrix4fv(modelMatrixLocation, 1, GL_FALSE, glm::value_ptr(modelMatrix)); //uploaed the modelMatrix to the appropriate uniform location
+	// upload only one matrix, and don't transpose it
+
+	glUniformMatrix4fv(viewMatrixLocation, 1, GL_FALSE, glm::value_ptr(viewMatrix)); //uploaed the modelMatrix to the appropriate uniform location
+	// upload only one matrix, and don't transpose it
+
+
+	size_t colorData = sizeof(vertexData) / 2;
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject); //bind positionBufferObject
+
+	glEnableVertexAttribArray(positionLocation);
+	glEnableVertexAttribArray(colorLocation);
+
+	glVertexAttribPointer(positionLocation, 4, GL_FLOAT, GL_FALSE, 0, 0); //define **how** values are reader from positionBufferObject in Attrib 0
+	glVertexAttribPointer(colorLocation, 4, GL_FLOAT, GL_FALSE, 0, (void*)colorData); //define **how** values are reader from positionBufferObject in Attrib 1
+
+	glDrawArrays(GL_TRIANGLES, 0, 36); //Draw something, using Triangles, and 3 vertices - i.e. one lonely triangle
+
+	glDisableVertexAttribArray(0); //cleanup
+	glUseProgram(0); //clean up
 }
 
 loadAssets::~loadAssets()
