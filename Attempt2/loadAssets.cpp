@@ -118,6 +118,7 @@ loadAssets::loadAssets()
 	colorLocation = glGetAttribLocation(theProgram, "color");
 	modelMatrixLocation = glGetUniformLocation(theProgram, "modelMatrix");
 	viewMatrixLocation = glGetUniformLocation(theProgram, "viewMatrix");
+	projectionMatrixLocation = glGetUniformLocation(theProgram, "projectionMatrix");
 
 	//clean up shaders (we don't need them anymore as they are no in theProgram
 	for_each(shaderList.begin(), shaderList.end(), glDeleteShader);
@@ -130,8 +131,7 @@ loadAssets::loadAssets()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-
-
+	/*
 	//render
 	glUseProgram(theProgram); //installs the program object specified by program as part of current rendering state
 
@@ -156,6 +156,7 @@ loadAssets::loadAssets()
 
 	glDisableVertexAttribArray(0); //cleanup
 	glUseProgram(0); //clean up
+	*/
 }
 
 loadAssets::~loadAssets()

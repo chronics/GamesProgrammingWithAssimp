@@ -21,8 +21,9 @@ class loadAssets
 public:
 	loadAssets();
 	~loadAssets();
+
 	GLuint vao, vertexBufferObject, theProgram, vertex, normal, uv;
-	GLint positionLocation, colorLocation, modelMatrixLocation, viewMatrixLocation;
+	GLint positionLocation, colorLocation, modelMatrixLocation, viewMatrixLocation, projectionMatrixLocation;
 
 	glm::mat4 modelMatrix; // the modelMatrix for our object - which is the identity matrix by default
 	glm::mat4 viewMatrix; // the viewMatrix for our "camera" - which is the identity matrix by default
