@@ -18,7 +18,6 @@
 #include <GLM\gtc\type_ptr.hpp>
 
 
-
 class render
 {
 public:
@@ -30,6 +29,7 @@ public:
 	GLint modelMatrixLocation; //GLint that we'll fill in with the location of the `modelMatrix` uniform in the GLSL
 	GLint viewMatrixLocation;
 
+	GLuint theProgram2;
 };
 
 #endif

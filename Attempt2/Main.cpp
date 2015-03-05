@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
 	
 	createWindow createWindow("GamesEngineV2", 1366, 768);
-	setGLAttributes setGLAttributes(3, 3);
+	setGLAttributes setGLAttributes(3, 1);
 
 	loadAssets loadAssets();
 

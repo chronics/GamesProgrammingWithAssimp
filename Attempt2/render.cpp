@@ -5,7 +5,7 @@
 
 render::render()
 {
-	glUseProgram(theProgram); //installs the program object specified by program as part of current rendering state
+	glUseProgram(theProgram2); //installs the program object specified by program as part of current rendering state
 
 	glUniformMatrix4fv(viewMatrixLocation, 1, GL_FALSE, glm::value_ptr(viewMatrix)); //uploaed the modelMatrix to the appropriate uniform location
 	// upload only one matrix, and don't transpose it
