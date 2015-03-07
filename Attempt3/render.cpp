@@ -8,7 +8,7 @@
 #include <glm/gtc/type_ptr.hpp> 
 
 
-GLSLGLVariables::GLSLGLVariables()
+render::render()
 {
 	glUseProgram(theProgram); //installs the program object specified by program as part of current rendering state
 

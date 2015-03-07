@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="createContext.cpp" />
     <ClCompile Include="createWindow.cpp" />
     <ClCompile Include="loadAssets.cpp" />
     <ClCompile Include="main.cpp" />

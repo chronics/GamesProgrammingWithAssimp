@@ -89,15 +89,19 @@ GLuint createProgram(const std::vector<GLuint> &shaderList)
 	return program;
 }
 
-GLSLGLVariables::GLSLGLVariables()
+loadAssets::loadAssets()
 {
 	glGenVertexArrays(1, &vao); //create a Vertex Array Object
 	glBindVertexArray(vao); //make the VAO active
 
 	std::cout << "Vertex Array Object created OK! GLUint is: " << vao << std::endl;
 
-	//initializeProgram
+	loadAssets::initializeProgram();
+	loadAssets::initializeVertexBuffer();
+}
 
+void loadAssets::initializeProgram()
+{
 	std::string vertexSource = LoadShaderFromFile("shaders/shader.vert");
 	std::string fragmentSource = LoadShaderFromFile("shaders/shader.frag");
 
@@ -122,9 +126,10 @@ GLSLGLVariables::GLSLGLVariables()
 
 	//clean up shaders (we don't need them anymore as they are no in theProgram
 	for_each(shaderList.begin(), shaderList.end(), glDeleteShader);
-
-	//initializeVertexBuffer
-
+}
+	
+void loadAssets::initializeVertexBuffer()
+{
 	glGenBuffers(1, &vertexBufferObject);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);

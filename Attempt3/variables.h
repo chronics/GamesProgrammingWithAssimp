@@ -19,14 +19,24 @@
 GLuint theProgram, vertexBufferObject, vertexBufferObject2D, vao;
 GLint positionLocation, colorLocation, modelMatrixLocation, viewMatrixLocation, projectionMatrixLocation;
 
-class GLSLGLVariables
+SDL_Window* window;
+SDL_GLContext context;
+
+glm::mat4 modelMatrix;
+glm::mat4 viewMatrix;
+glm::mat4 projectionMatrix;
+glm::mat4 rotationMatrix; 
+glm::mat4 translationMatrix;
+
+class loadAssets
 {
 public:
-	GLSLGLVariables();
-	~GLSLGLVariables();
+	loadAssets();
+	~loadAssets();
 
+	void initializeProgram();
+	void initializeVertexBuffer();
 	
-
 private:
 
 };
@@ -37,9 +47,9 @@ public:
 	createWindow(const std::string& title, int width, int height);
 	~createWindow();
 
+	void CreateContext();
+	
 private:
-	SDL_Window* window;
-	SDL_GLContext context;
 };
 
 class SetAttributes
@@ -49,6 +59,27 @@ public:
 	~SetAttributes();
 
 private:
+};
+
+class CreateContext
+{
+public:
+	CreateContext();
+	~CreateContext();
+
+	void initGlew();
+private:
+	;
+};
+
+class render
+{
+public:
+	render();
+	~render();
+
+private:
+
 };
 
 
