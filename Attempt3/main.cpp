@@ -44,7 +44,7 @@ int /*mainClass::*/main( int argc, char* args[] )
 
 		glClearColor(0.0f, 0.0f, 0.2f, 1.0f);
 
-		//render::render(); //RENDER HERE - PLACEHOLDER
+		render::render(); //RENDER HERE - PLACEHOLDER
 
 		SDL_GL_SwapWindow(window);; //present the frame buffer to the display (swapBuffers)
 
