@@ -30,7 +30,19 @@ private:
 
 };
 
+/*
+class mainClass : public windowVars
+{
+public:
+	mainClass();
+	~mainClass();
 
+	int main(int argc, char* args[]);
+
+private:
+
+};
+*/
 class loadAssets
 {
 public:
