@@ -1,6 +1,5 @@
 #include "variables.h"
 
-
 createWindow::createWindow(const std::string& title, int width, int height)
 {
 
@@ -18,12 +17,8 @@ createWindow::createWindow(const std::string& title, int width, int height)
 
 	if (window == nullptr)
 		std::cout << "Failed to create window!" << std::endl;
-
-	
 	
 }
-
-
 
 
 createWindow::~createWindow()
