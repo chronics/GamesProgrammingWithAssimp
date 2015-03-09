@@ -79,13 +79,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="createWindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="setGLAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="createWindow.h" />
-    <ClInclude Include="setGLAttributes.h" />
     <ClInclude Include="vertexData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

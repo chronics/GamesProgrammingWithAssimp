@@ -14,12 +14,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="createWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="createWindow.h">
+    <ClInclude Include="vertexData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

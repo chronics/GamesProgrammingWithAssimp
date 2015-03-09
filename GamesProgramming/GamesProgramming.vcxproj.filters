@@ -18,21 +18,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="createWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="setGLAttributes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vertexData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="createWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="setGLAttributes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
