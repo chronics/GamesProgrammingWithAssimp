@@ -19,6 +19,7 @@
     <ClCompile Include="setGLAttributes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="renderer.h" />
     <ClInclude Include="variables.h" />
     <ClInclude Include="vertexData.h" />
   </ItemGroup>
