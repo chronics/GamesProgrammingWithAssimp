@@ -13,30 +13,31 @@
 #include <glm/gtc/matrix_transform.hpp> 
 #include <glm/gtc/type_ptr.hpp> 
 
-#include "variables.h"
+//#include "variables.h"
+#include "renderer.h"
 
 using namespace std;
 
 bool done = false;
+renderer *myRenderer;
 
-void initialise()
-{
-	if (SDL_Init(SDL_INIT_EVERYTHING) != 0){
-		cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
-		exit(1);
-	}
-	cout << "SDL initialised OK!\n";
-}
+
+
+GLuint theProgram, vertexBufferObject, vertexBufferObject2D, vao;
+GLint positionLocation, colorLocation, modelMatrixLocation, viewMatrixLocation, projectionMatrixLocation;
+
+glm::mat4 modelMatrix, viewMatrix, projectionMatrix, rotationMatrix, translationMatrix;
+
+void initializeProgram();
+void initializeVertexBuffer();
+
 
 int /*mainClass::*/main( int argc, char* args[] )
 {
 	//do once
-	initialise();
-	createWindow::createWindow("gamesProgramming", 600, 600); // set name, hight and width
-	SetAttributes::SetAttributes(3, 3);
-	CreateContext::CreateContext();
+	myRenderer = new renderer("gamesProgramming", 600, 600, 3, 3);
 
-	loadAssets::loadAssets();
+	//TODO loadAssets::loadAssets();
 
 	while (!done && (SDL_GetTicks() < 500000)) 
 	{
@@ -44,11 +45,12 @@ int /*mainClass::*/main( int argc, char* args[] )
 
 		glClearColor(0.0f, 0.0f, 0.2f, 1.0f);
 
-		render::render(); //RENDER HERE - PLACEHOLDER
+		renderer::render(); //RENDER HERE - PLACEHOLDER
 
-		SDL_GL_SwapWindow(window);; //present the frame buffer to the display (swapBuffers)
+		renderer.swapWindow; //present the frame buffer to the display (swapBuffers)
 
 	} 
 
+	delete myRenderer;
 	return 0;
 }
