@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+
 #include <algorithm>
 #include <string>
 
@@ -16,21 +17,41 @@
 #include <glm/gtc/matrix_transform.hpp> 
 #include <glm/gtc/type_ptr.hpp> 
 
-GLuint theProgram, vertexBufferObject, vertexBufferObject2D, vao;
-GLint positionLocation, colorLocation, modelMatrixLocation, viewMatrixLocation, projectionMatrixLocation;
+class windowVars
+{
+public:
+	windowVars();
+	~windowVars();
 
-SDL_Window* window;
-SDL_GLContext context;
+	SDL_Window* window;
+	SDL_GLContext context;
 
-glm::mat4 modelMatrix;
-glm::mat4 viewMatrix;
-glm::mat4 projectionMatrix;
-glm::mat4 rotationMatrix; 
-glm::mat4 translationMatrix;
+private:
 
+};
+
+/*
+class mainClass : public windowVars
+{
+public:
+	mainClass();
+	~mainClass();
+
+	int main(int argc, char* args[]);
+
+private:
+
+};
+*/
 class loadAssets
 {
 public:
+	
+	GLuint theProgram, vertexBufferObject, vertexBufferObject2D, vao;
+	GLint positionLocation, colorLocation, modelMatrixLocation, viewMatrixLocation, projectionMatrixLocation;
+
+	glm::mat4 modelMatrix, viewMatrix, projectionMatrix, rotationMatrix, translationMatrix;
+
 	loadAssets();
 	~loadAssets();
 
@@ -41,7 +62,7 @@ private:
 
 };
 
-class createWindow
+class createWindow : public windowVars
 {
 public:
 	createWindow(const std::string& title, int width, int height);
@@ -61,7 +82,7 @@ public:
 private:
 };
 
-class CreateContext
+class CreateContext : public windowVars
 {
 public:
 	CreateContext();
@@ -69,10 +90,12 @@ public:
 
 	void initGlew();
 private:
-	;
+
+	
 };
 
-class render
+
+class render : public loadAssets
 {
 public:
 	render();

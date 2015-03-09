@@ -28,7 +28,7 @@ void initialise()
 	cout << "SDL initialised OK!\n";
 }
 
-int main( int argc, char* args[] )
+int /*mainClass::*/main( int argc, char* args[] )
 {
 	//do once
 	initialise();

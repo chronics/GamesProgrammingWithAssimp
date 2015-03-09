@@ -1,6 +1,5 @@
 #include "variables.h"
 
-
 createWindow::createWindow(const std::string& title, int width, int height)
 {
 
@@ -9,6 +8,7 @@ createWindow::createWindow(const std::string& title, int width, int height)
 	char inputc = 'y';
 	std::cin >> inputc;
 	std::cout << "Loading... (this may take a while!) ...\n";
+	std::cout << "You want your freedom?\nTake it\nThat's what I'm counting on\nI used to want you dead\nbut\nNow I only want you gone";
 
 	if (inputc == 'y' || inputc == 'Y'){
 		window = SDL_CreateWindow(title.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1080, 768, SDL_WINDOW_OPENGL | SDL_WINDOW_FULLSCREEN | SDL_WINDOW_SHOWN);
@@ -18,12 +18,8 @@ createWindow::createWindow(const std::string& title, int width, int height)
 
 	if (window == nullptr)
 		std::cout << "Failed to create window!" << std::endl;
-
-	
 	
 }
-
-
 
 
 createWindow::~createWindow()
